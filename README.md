@@ -1,0 +1,2 @@
+# hypotecni-kalkulacka
+Hypotéční kalkulačka.
