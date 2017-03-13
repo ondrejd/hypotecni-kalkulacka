@@ -1,6 +1,10 @@
 <?php
 /**
- * Simple routing script.
+ * Simple routing script for PHP built-in server.
+ *
+ * Usage:
+ *
+ *   php -S "localhost:8000" "router.php"
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
  * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
