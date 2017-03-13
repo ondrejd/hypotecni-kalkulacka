@@ -1,2 +1,4 @@
-# hypotecni-kalkulacka
-Hypotéční kalkulačka.
+# Hypotéční kalkulačka
+
+PHP aplikace vytvořená pomocí [Zend Framework 2](https://framework.zend.com/).
+
