@@ -24,13 +24,49 @@ return [
                     ],
                 ],
             ],
-            'application' => [
-                'type'    => Segment::class,
+            'admin' => [
+                'type' => Literal::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route' => '/admin',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'controller' => Controller\AdminController::class,
+                        'action' => 'index',
+                    ],
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'data' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/data[:page]',
+                            'constraints' => [
+                                'page' => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'action' => 'data',
+                            ],
+                        ],
+                    ],
+                    'destinations' => [
+                        'type' => Segment::class,
+                        'options' => [
+                            'route' => '/data[:server]',
+                            'constraints' => [
+                                'server' => '[0-9]+',
+                            ],
+                            'defaults' => [
+                                'action' => 'destinations',
+                            ],
+                        ],
+                    ],
+                    'settings' => [
+                        'type' => Literal::class,
+                        'options' => [
+                            'route' => '/settings',
+                            'defaults' => [
+                                'action' => 'settings',
+                            ],
+                        ],
                     ],
                 ],
             ],
@@ -39,6 +75,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\AdminController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

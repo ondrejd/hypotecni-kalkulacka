@@ -1,0 +1,57 @@
+<div class="jumbotron">
+    <h1>Administrace <span class="zf-green">Hypotéčení kalkulačky</span></h1>
+
+    <p>
+        <strong>Hypotéční kalkulačka</strong> je úspěšně nainstalována a probíhá sběr dat. V současnosti je uloženo <strong style="color: #f30;">1556</strong> záznamů.
+    </p>
+
+    <p><a class="btn btn-primary btn-lg" href="<?php echo $this->url( 'admin/data' ) ?>">Zobrazit shromážděná data &raquo;</a></p>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Cílové servery</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    V této části můžete nastavit cílové servery na kterých je <strong>Hypotéční kalkulačka</strong> zobrazena. Aktuálně máte definovaných <strong style="color: #f30;">6</strong> destinací.
+                </p>
+
+                <p><a class="btn btn-danger pull-right" href="<?php echo $this->url( 'admin/destinations' ) ?>">Nastavit cílové servery &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nastavení aplikace</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Zde můžete upravit další nastavení aplikace <strong>Hypotéční kalkulačka</strong> &ndash; jako jsou notifikační emaily, přístup k databázi atp.
+                </p>
+
+                <p><a class="btn btn-success pull-right" href="<?php echo $this->url( 'admin/settings' ) ?>">Upravit nastavení &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nápověda &amp; Podpora</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Pokud potřebujete pomoc či si chcete objednat úpravy napište zpravu na email <a href="mailto:ondrejd@gmail.com">ondrejd@gmail.com</a> autorovi této aplikace.
+                </p>
+
+                <p><a class="btn btn-success pull-right" href="https://github.com/ondrejd/hypotecni-kalkulacka" target="_blank">Stránky projektu &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+</div>
