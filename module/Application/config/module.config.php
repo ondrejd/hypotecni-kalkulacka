@@ -50,7 +50,7 @@ return [
                     'destinations' => [
                         'type' => Segment::class,
                         'options' => [
-                            'route' => '/data[:server]',
+                            'route' => '/destinations[:server]',
                             'constraints' => [
                                 'server' => '[0-9]+',
                             ],
