@@ -22,7 +22,18 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
+        $view = new ViewModel();
         $form = new ContactForm();
-        return array( 'contactForm' => $form );
+
+        // ...
+
+        $view->contactForm = $form;
+
+        return $view;
+    }
+
+    public function adminAction()
+    {
+        return new ViewModel();
     }
 }
