@@ -6,9 +6,9 @@
  *
  *   php -S "localhost:8000" "router.php"
  *
- * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @author  Ondřej Doněk, <ondrejd@gmail.com>
  * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
- * @link https://github.com/ondrejd/hypotecni-kaklulacka for the canonical source repository
+ * @link    https://github.com/ondrejd/hypotecni-kaklulacka for the canonical source repository
  */
 
 $uri = filter_input( INPUT_SERVER, 'REQUEST_URI' );
