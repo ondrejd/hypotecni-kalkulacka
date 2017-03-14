@@ -11,6 +11,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Application\Form\SettingsForm;
+
 /**
  * Description of AdminController
  *
@@ -35,6 +37,13 @@ class AdminController extends AbstractActionController
 
     public function settingsAction()
     {
-        return new ViewModel();
+        $view = new ViewModel();
+        $form = new SettingsForm();
+
+        // ...
+
+        $view->settingsForm = $form;
+
+        return $view;
     }
 }
