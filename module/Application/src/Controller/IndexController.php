@@ -1,8 +1,9 @@
 <?php
 /**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @author  Ondřej Doněk, <ondrejd@gmail.com>
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
+ * @link    https://github.com/ondrejd/hypotecni-kaklulacka for the canonical source repository
+ * @package Application
  */
 
 namespace Application\Controller;
@@ -10,10 +11,18 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
+use Application\Form\ContactForm;
+
+/**
+ * Description of IndexController
+ *
+ * @author ondrejd
+ */
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $form = new ContactForm();
+        return array( 'contactForm' => $form );
     }
 }
