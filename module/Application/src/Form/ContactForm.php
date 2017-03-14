@@ -101,8 +101,5 @@ class ContactForm extends Form
                 'value' => 'Odeslat',
            ),
         ));
-
-        // We can also define the input filter here, or lazy-create it
-        // in the getInputFilter() method.
     }
 }

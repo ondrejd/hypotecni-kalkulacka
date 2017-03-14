@@ -36,7 +36,6 @@ který bude mít oddělený konfigurační soubor).
 
 
 <div class="row">
-
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -53,14 +52,14 @@ který bude mít oddělený konfigurační soubor).
                     $form->prepare();
 
                     echo $this->form()->openTag($form);
-                    echo $this->formElement( $this->contactForm->get( 'security') );
+                    echo $this->formElement($form->get('security'));
                     ?>
                     <?php echo $this->form()->openTag( $form ) ?>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('name'));?>
+                        <?php echo $this->formRow($form->get('name')) ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('email'));?>
+                        <?php echo $this->formRow($form->get('email')) ?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->formRow($form->get('phone'));?>
@@ -69,7 +68,7 @@ který bude mít oddělený konfigurační soubor).
                         <?php echo $this->formRow($form->get('zip'));?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formSubmit( $this->contactForm->get( 'send' ) ) ?>
+                        <?php echo $this->formSubmit($form->get('send')) ?>
                     </div>
                     <?php echo $this->form()->closeTag() ?>
                 </div>
