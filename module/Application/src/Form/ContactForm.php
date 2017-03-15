@@ -28,7 +28,8 @@ class ContactForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'text',
+                'class' => 'form-control input-name',
+                'id' => 'input_name',
                 'placeholder' => 'Vaše jméno',
             ),
             'filters'  => array(
@@ -44,6 +45,8 @@ class ContactForm extends Form
 
         $this->add(array(
             'attributes' => array(
+                'class' => 'form-control input-email',
+                'id' => 'input_email',
                 'placeholder' => 'Váš email',
             ),
             'filters' => array(
@@ -52,7 +55,7 @@ class ContactForm extends Form
             ),
             'name' => 'email',
             'options' => array(
-                'label' => 'E-mail'
+                'label' => 'E-mail',
             ),
             'required' => true,
             'type' => 'Zend\Form\Element\Email',
@@ -70,7 +73,8 @@ class ContactForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'text',
+                'class' => 'form-control input-phone',
+                'id' => 'input_phone',
                 'placeholder' => 'Telefon',
             ),
             'name' => 'phone',
@@ -82,7 +86,8 @@ class ContactForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'text',
+                'class' => 'form-control input-zip',
+                'id' => 'input_zip',
                 'placeholder' => 'PSČ',
             ),
             'name' => 'zip',
@@ -94,12 +99,12 @@ class ContactForm extends Form
 
         $this->add(new Element\Csrf('security'));
         $this->add(array(
-            'name' => 'send',
-            'type'  => 'Submit',
             'attributes' => array(
                 'class' => 'btn btn-success',
                 'value' => 'Odeslat',
-           ),
+            ),
+            'name' => 'send',
+            'type'  => 'Submit',
         ));
     }
 }

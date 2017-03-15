@@ -43,7 +43,7 @@ který bude mít oddělený konfigurační soubor).
             </div>
             <div class="panel-body">
                 <p>Vyplňte kontaktní informace a sejděte se s naším makléřem ve vaší lokalitě, pomůže vám vyjednat ty nejlepší podmínky. Všechny naše služby jsou zdarma.</p>
-                <div class="form">
+                <div class="form-container">
                     <?php
                     /**
                      * @var \Application\Form\ContactForm $form
@@ -53,19 +53,27 @@ který bude mít oddělený konfigurační soubor).
 
                     echo $this->form()->openTag($form);
                     echo $this->formElement($form->get('security'));
+
+                    $input_name = $form->get('name');
+                    $input_email = $form->get('email');
+                    $input_phone = $form->get('phone');
+                    $input_zip = $form->get('zip');
                     ?>
-                    <?php echo $this->form()->openTag( $form ) ?>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('name')) ?>
+                        <label for="<?php echo $input_name->getAttribute('id') ?>"><?php echo $input_name->getOption('label') ?></label>
+                        <?php echo $this->formElement($input_name) ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('email')) ?>
+                        <label for="<?php echo $input_email->getAttribute('id') ?>"><?php echo $input_email->getOption('label') ?></label>
+                        <?php echo $this->formElement($input_email) ?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('phone'));?>
+                        <label for="<?php echo $input_phone->getAttribute('id') ?>"><?php echo $input_phone->getOption('label') ?></label>
+                        <?php echo $this->formElement($input_phone);?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formRow($form->get('zip'));?>
+                        <label for="<?php echo $input_zip->getAttribute('id') ?>"><?php echo $input_zip->getOption('label') ?></label>
+                        <?php echo $this->formElement($input_zip);?>
                     </div>
                     <div class="form-group">
                         <?php echo $this->formSubmit($form->get('send')) ?>
