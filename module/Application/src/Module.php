@@ -7,6 +7,11 @@
 
 namespace Application;
 
+use Application\Model\Contact;
+use Application\Model\ContactTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
+
 class Module
 {
     const VERSION = '3.0.2';
@@ -14,5 +19,24 @@ class Module
     public function getConfig()
     {
         return include __DIR__ . '/../config/module.config.php';
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'Application\Model\ContactTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ContactTableGateway');
+                    $table = new ContactTable($tableGateway);
+                    return $table;
+                },
+                'ContactTableGateway' => function($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Album());
+                    return new TableGateway('contact', $dbAdapter, null, $resultSetPrototype);
+                },
+            ),
+        );
     }
 }
