@@ -21,7 +21,7 @@ use Zend\InputFilter\InputFilter;
  */
 class SettingsForm extends Form
 {
-    public function __construct($name = 'contact-form')
+    public function __construct($name = 'settings-form')
     {
         parent::__construct($name);
         $this->setAttribute('method', 'post');
