@@ -18,7 +18,7 @@ if ( empty( $uri ) ) {
     exit( 1 );
 }
 
-if ( preg_match( '/\.(?:css|gif|ico|jpg|jpeg|png|svg|webp)$/', $uri, $ext ) ) {
+if ( preg_match( '/\.(?:css|gif|ico|jpg|jpeg|js|png|svg|webp)$/', $uri, $ext ) ) {
     $path = 'public' . $_SERVER['REQUEST_URI'];
 
     header( 'Cache-Control: no-cache, must-revalidate' );
