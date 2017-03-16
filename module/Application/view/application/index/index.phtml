@@ -34,6 +34,63 @@ který bude mít oddělený konfigurační soubor).
   pomocí iframe kódu.
 </pre>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Hypotéční kalkulačka - krok 1</h3>
+            </div>
+            <div class="panel-body">
+                <p>...</p>
+                <div class="form-container">
+                    <?php
+                    /**
+                     * @var \Application\Form\CalendarForm $form
+                     */
+                    $form = $this->calculatorForm;
+                    $form->prepare();
+
+                    echo $this->form()->openTag($form);
+                    echo $this->formElement($form->get('security'));
+
+                    $input_price     = $form->get('estate_price');
+                    $input_mortgage  = $form->get('mortgage');
+                    $input_amort     = $form->get('amortization_length');
+                    $input_fixation  = $form->get('fixation');
+                    $input_assurance = $form->get('assurance');
+                    ?>
+                    <div class="form-group">
+                        <label for="<?= $input_price->getAttribute('id') ?>"><?= $input_price->getOption('label') ?></label>
+                        <?= $this->formElement($input_price) ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?= $input_mortgage->getAttribute('id') ?>"><?= $input_mortgage->getOption('label') ?></label>
+                        <?= $this->formElement($input_mortgage) ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?= $input_amort->getAttribute('id') ?>"><?= $input_amort->getOption('label') ?></label>
+                        <?= $this->formElement($input_amort) ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?= $input_fixation->getAttribute('id') ?>"><?= $input_fixation->getOption('label') ?></label>
+                        <?= $this->formElement($input_fixation) ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?= $input_assurance->getAttribute('id') ?>">
+                            <?= $this->formElement($input_assurance) ?>
+                            <?= $input_assurance->getOption('label') ?>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <?= $this->formSubmit($form->get('send')) ?>
+                    </div>
+                    <?= $this->form()->closeTag() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -60,25 +117,25 @@ který bude mít oddělený konfigurační soubor).
                     $input_zip = $form->get('zip');
                     ?>
                     <div class="form-group">
-                        <label for="<?php echo $input_name->getAttribute('id') ?>"><?php echo $input_name->getOption('label') ?></label>
-                        <?php echo $this->formElement($input_name) ?>
+                        <label for="<?= $input_name->getAttribute('id') ?>"><?= $input_name->getOption('label') ?></label>
+                        <?= $this->formElement($input_name) ?>
                     </div>
                     <div class="form-group">
-                        <label for="<?php echo $input_email->getAttribute('id') ?>"><?php echo $input_email->getOption('label') ?></label>
-                        <?php echo $this->formElement($input_email) ?>
+                        <label for="<?= $input_email->getAttribute('id') ?>"><?= $input_email->getOption('label') ?></label>
+                        <?= $this->formElement($input_email) ?>
                     </div>
                     <div class="form-group">
-                        <label for="<?php echo $input_phone->getAttribute('id') ?>"><?php echo $input_phone->getOption('label') ?></label>
-                        <?php echo $this->formElement($input_phone);?>
+                        <label for="<?= $input_phone->getAttribute('id') ?>"><?= $input_phone->getOption('label') ?></label>
+                        <?= $this->formElement($input_phone);?>
                     </div>
                     <div class="form-group">
-                        <label for="<?php echo $input_zip->getAttribute('id') ?>"><?php echo $input_zip->getOption('label') ?></label>
-                        <?php echo $this->formElement($input_zip);?>
+                        <label for="<?= $input_zip->getAttribute('id') ?>"><?= $input_zip->getOption('label') ?></label>
+                        <?= $this->formElement($input_zip);?>
                     </div>
                     <div class="form-group">
-                        <?php echo $this->formSubmit($form->get('send')) ?>
+                        <?= $this->formSubmit($form->get('send')) ?>
                     </div>
-                    <?php echo $this->form()->closeTag() ?>
+                    <?= $this->form()->closeTag() ?>
                 </div>
             </div>
         </div>

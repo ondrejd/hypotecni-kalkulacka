@@ -26,15 +26,13 @@ class CalculatorForm extends Form
         parent::__construct($name);
         $this->setAttribute('method', 'post');
 
-        //estate_price
-        //mortgage
-        //amortization_length
-        //fixation
-        //assurance
-
         $this->add(array(
             'attributes' => array(
-                'class' => 'form-control input-estate_price',
+                'class' => 'form-control input-estate_price slider',
+                'data-provide' => 'slider',
+                'data-slider-min' => 300000,
+                'data-slider-max' => 10000000,
+                'data-slider-value' => 2200000,
                 //'placeholder' => '',
             ),
             'filters'  => array(
@@ -45,13 +43,17 @@ class CalculatorForm extends Form
                 'label' => 'Cena nemovitosti',
             ),
             'required' => true,
-            'type' => 'Text',
-            'value' => '2200000',
+            'type' => 'Zend\Form\Element\Text',
+            'value' => 2200000,
         ));
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'form-control input-mortgage',
+                'class' => 'form-control input-mortgage slider',
+                'data-provide' => 'slider',
+                'data-slider-min' => 280000,
+                'data-slider-max' => 9500000,
+                'data-slider-value' => 1500000,
                 //'placeholder' => '',
             ),
             'filters' => array(),
@@ -60,7 +62,7 @@ class CalculatorForm extends Form
                 'label' => 'Výše hypotéky'
             ),
             'required' => true,
-            'type' => 'Zend\Form\Element\Email',
+            'type' => 'Zend\Form\Element\Number',
             'validators' => array(
                 array(
                     'name' => 'StringLength',
@@ -71,7 +73,55 @@ class CalculatorForm extends Form
                 ),
                 array('name' => 'EmailAddress'),
             ),
-            'value' => '1500000',
+            'value' => 1500000,
+        ));
+
+        $this->add(array(
+            'attributes' => array(
+                'class' => 'form-control input-mortgage slider',
+                'data-provide' => 'slider',
+                'data-slider-min' => 5,
+                'data-slider-max' => 30,
+                'data-slider-value' => 22,
+                //'placeholder' => '',
+            ),
+            'name' => 'amortization_length',
+            'options' => array(
+                'label' => 'Doba splácení',
+            ),
+            'type' => 'Zend\Form\Element\Number',
+            'value' => 22,
+        ));
+
+        $this->add(array(
+            'attributes' => array(
+                'class' => 'form-control input-fixation',
+                'id' => 'input_fixation',
+            ),
+            'name' => 'fixation',
+            'options' => array(
+                'label' => 'Fixace',
+                'value_options' => array(
+                    '1'  => '1 rok',
+                    '3'  => '3 roky',
+                    '5'  => '5 let',
+                    '10' => '10 let',
+                ),
+            ),
+            'type' => 'Zend\Form\Element\Select',
+            'value' => '3',
+        ));
+
+        $this->add(array(
+            'attributes' => array(
+                'class' => 'input-assurance',
+                'id' => 'input_assurance',
+            ),
+            'name' => 'assurance',
+            'options' => array(
+                'label' => 'Pojištění schopnosti splácet',
+            ),
+            'type' => 'Zend\Form\Element\Checkbox',
         ));
 
         $this->add(new Element\Csrf('security'));
