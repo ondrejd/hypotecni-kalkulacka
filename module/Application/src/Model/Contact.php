@@ -25,8 +25,15 @@ class Contact implements InputFilterAwareInterface
     public $phone;
     public $zip;
 
+    /**
+     * @var InputFilter
+     */
     protected $inputFilter;
 
+    /**
+     * @param array $data
+     * @return void
+     */
     public function exchangeArray($data)
     {
         $this->id    = (isset($data['id']))    ? $data['id']    : null;
@@ -36,11 +43,26 @@ class Contact implements InputFilterAwareInterface
         $this->zip   = (isset($data['zip']))   ? $data['zip']   : null;
     }
 
+    /**
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
         throw new \Exception('Not used');
     }
 
+    /**
+     * @return InputFilter
+     */
     public function getInputFilter()
     {
         if (($this->inputFilter instanceof InputFilter)) {
