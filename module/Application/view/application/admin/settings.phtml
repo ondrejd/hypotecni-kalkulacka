@@ -1,17 +1,133 @@
 <div class="jumbotron">
-    <h1>Administrace &ndash; <span class="zf-green">Nastavení</span></h1>
+    <h1><a href="<?php echo $this->url('admin') ?>">Administrace</a> &ndash; <span class="zf-green">Nastavení</span></h1>
     <p>
         Zde můžete upravit další nastavení aplikace <strong>Hypotéční kalkulačka</strong> &ndash; jako jsou notifikační emaily, přístup k databázi atp.
     </p>
 </div>
 <div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fixace 1 rok</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="a1">do 85 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 85 %</div>
+                            <input id="a1" name="a1" step="0.01" type="number" value="1.54" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="a2">do 90 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 90 %</div>
+                            <input id="a2" name="a2" step="0.01" type="number" value="2.24" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="a3">do 95 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 95 %</div>
+                            <input id="a3" name="a3" step="0.01" type="number" value="3.29" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-right" style="margin-bottom: 0px;">
+                    <button class="btn btn-success">Uložit</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fixace 3/5 rok</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="b1">do 85 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 85 %</div>
+                            <input id="b1" name="b1" step="0.01" type="number" value="1.54" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="b2">do 90 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 90 %</div>
+                            <input id="b2" name="b2" step="0.01" type="number" value="1.89" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="b3">do 95 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 95 %</div>
+                            <input id="b3" name="b3" step="0.01" type="number" value="2.49" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-right" style="margin-bottom: 0px;">
+                    <button class="btn btn-success">Uložit</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fixace 10 let</h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="c1">do 85 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 85 %</div>
+                            <input id="c1" name="c1" step="0.01" type="number" value="1.83" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="c2">do 90 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 90 %</div>
+                            <input id="c2" name="c2" step="0.01" type="number" value="2.19" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sr-only" for="c3">do 95 %</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Do 95 %</div>
+                            <input id="c3" name="c3" step="0.01" type="number" value="2.89" class="form-control text-right">
+                            <div class="input-group-addon">%</div>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-right" style="margin-bottom: 0px;">
+                    <button class="btn btn-success">Uložit</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Nastavení aplikace <span>Hypotéční kalkulačka</span></h3>
+                <h3 class="panel-title">Ostatní nastavení</h3>
             </div>
             <div class="panel-body">
-                <div class="form">
+                <div class="form-container">
                     <?php
                     /**
                      * @var \Application\Form\SettingsForm $form
@@ -23,7 +139,6 @@
                     echo $this->formElement($form->get('security'));
                     ?>
                     <?php echo $this->form()->openTag( $form ) ?>
-                    <div class="form-group">
                     <div class="form-group">
                         <?php echo $this->formRow($form->get('email')) ?>
                         <p class="small"><?php echo $form->get('email')->getOption('description'); ?></p>
@@ -41,6 +156,9 @@
                     </div>
                     <?php echo $this->form()->closeTag() ?>
                 </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success">Uložit</button>
             </div>
         </div>
     </div>
