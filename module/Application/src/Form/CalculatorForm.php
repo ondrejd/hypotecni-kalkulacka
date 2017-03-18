@@ -28,10 +28,11 @@ class CalculatorForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'form-control input-estate_price slider',
-                'data-provide' => 'slider',
-                'data-slider-min' => 300000,
-                'data-slider-max' => 10000000,
+                'class'             => 'form-control input-estate_price slider',
+                'data-provide'      => 'slider',
+                'data-slider-min'   => 300000,
+                'data-slider-max'   => 10000000,
+                'data-slider-step'  => 50000,
                 'data-slider-value' => 2200000,
                 //'placeholder' => '',
             ),
@@ -49,10 +50,11 @@ class CalculatorForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'form-control input-mortgage slider',
-                'data-provide' => 'slider',
-                'data-slider-min' => 280000,
-                'data-slider-max' => 9500000,
+                'class'             => 'form-control input-mortgage slider',
+                'data-provide'      => 'slider',
+                'data-slider-min'   => 280000,
+                'data-slider-max'   => 9500000,
+                'data-slider-step'  => 50000,
                 'data-slider-value' => 1500000,
                 //'placeholder' => '',
             ),
@@ -78,7 +80,7 @@ class CalculatorForm extends Form
 
         $this->add(array(
             'attributes' => array(
-                'class' => 'form-control input-mortgage slider',
+                'class' => 'form-control input-amortization_length slider',
                 'data-provide' => 'slider',
                 'data-slider-min' => 5,
                 'data-slider-max' => 30,

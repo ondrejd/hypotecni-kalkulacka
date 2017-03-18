@@ -86,6 +86,26 @@ který bude mít oddělený konfigurační soubor).
                     </div>
                     <?= $this->form()->closeTag() ?>
                 </div>
+                <script type="text/javascript">
+jQuery(".input-mortgage,.input-estate_price").slider({
+    formatter: function(value) {
+		return new Number(value).toLocaleString() + " Kč";
+	}
+});
+jQuery(".input-amortization_length").slider({
+    formatter: function(value) {
+        if (value == 1) {
+            return "1 rok";
+        }
+        else if (value > 1 && value < 5) {
+            return value + " roky";
+        }
+        else {
+            return value + " let";
+        }
+	}
+});
+                </script>
             </div>
         </div>
     </div>
