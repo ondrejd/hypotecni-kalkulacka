@@ -8,26 +8,20 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-
 use Application\Form\CalculatorForm;
 use Application\Form\ContactForm;
-use Application\Model\Contact;
-use Application\Model\ContactTable;
+use Zend\View\Model\ViewModel;
 
 /**
  * Description of IndexController
  *
  * @author ondrejd
  */
-class IndexController extends AbstractActionController
+class IndexController extends CommonController
 {
     /**
-     * @var \Application\Form\ContactForm $contactTable
+     * @return ViewModel
      */
-    protected $contactTable;
-
     public function indexAction()
     {
         $view = new ViewModel();
@@ -58,25 +52,5 @@ class IndexController extends AbstractActionController
         $view->contactForm = $contactForm;
 
         return $view;
-    }
-
-    public function adminAction()
-    {
-        return new ViewModel();
-    }
-
-    /**
-     * @return \Application\Form\ContactForm
-     */
-    public function getContactTable()
-    {
-        if (($this->contactTable instanceof ContactTable)) {
-            return $this->contactTable;
-        }
-
-        $sm = $this->getServiceLocator();
-        $this->contactTable = $sm->get('Application\Model\ContactTable');
-
-        return $this->contactTable;
     }
 }

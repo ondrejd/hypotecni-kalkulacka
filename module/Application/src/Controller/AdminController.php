@@ -8,33 +8,50 @@
 
 namespace Application\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
-
 use Application\Form\SettingsForm;
+use Zend\View\Model\ViewModel;
 
 /**
  * Description of AdminController
  *
  * @author ondrejd
  */
-class AdminController extends AbstractActionController
+class AdminController extends CommonController
 {
+    /**
+     * @return ViewModel
+     */
     public function indexAction()
     {
-        return new ViewModel();
+        $viewModel = new ViewModel();
+
+        return $viewModel;
     }
 
+    /**
+     * @return ViewModel
+     */
     public function dataAction()
     {
-        return new ViewModel();
+        $viewModel = new ViewModel();
+
+        return $viewModel;
     }
 
+    /**
+     * @return ViewModel
+     */
     public function destinationsAction()
     {
-        return new ViewModel();
+        $viewModel = new ViewModel();
+        $viewModel->destinationTable = $this->getDestinationTable();
+
+        return $viewModel;
     }
 
+    /**
+     * @return ViewModel
+     */
     public function settingsAction()
     {
         $view = new ViewModel();

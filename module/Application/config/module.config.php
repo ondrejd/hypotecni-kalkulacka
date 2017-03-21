@@ -7,9 +7,9 @@
 
 namespace Application;
 
+use Application\Controller\InvokableFactory;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
