@@ -11,6 +11,7 @@ use Application\Model\Contact;
 use Application\Model\ContactTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Mvc\MvcEvent;
 
 class Module
 {
@@ -38,5 +39,13 @@ class Module
                 },
             ),
         );
+    }
+
+    public function onBootstrap(MvcEvent $event)
+    {
+        //$serviceManager = $event->getApplication()->getServiceManager();
+        $viewModel = $event->getApplication()->getMvcEvent()->getViewModel();
+
+        $viewModel->language = 'cs';
     }
 }
