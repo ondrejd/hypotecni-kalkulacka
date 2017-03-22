@@ -13,6 +13,7 @@ use Application\Model\ContactTable;
 use Application\Model\Destination;
 use Application\Model\DestinationTable;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\ServiceManager\ServiceManager;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -23,42 +24,32 @@ use Zend\View\Model\ViewModel;
 class CommonController extends AbstractActionController
 {
     /**
-     * @var \Application\Model\ContactTable $contactTable
+     * @var ServiceManager $serviceManager
      */
-    protected $contactTable;
+    protected $serviceManager;
 
     /**
-     * @var \Application\Model\DestinationTable $destinationTable
+     * Constructor
+     * @param ServiceManager $serviceManager
      */
-    protected $destinationTable;
-
-    /**
-     * @return \Application\Model\ContactTable
-     */
-    public function getContactTable()
+    public function __construct(ServiceManager $serviceManager)
     {
-        if (($this->contactTable instanceof ContactTable)) {
-            return $this->contactTable;
-        }
-
-        $sm = $this->getServiceLocator();
-        $this->contactTable = $sm->get('Application\Model\ContactTable');
-
-        return $this->contactTable;
+        $this->serviceManager = $serviceManager;
     }
 
     /**
-     * @return \Application\Model\DestinationTable
+     * @return ContactTable
+     */
+    public function getContactTable()
+    {
+        return $this->serviceManager->get(ContactTable::class);
+    }
+
+    /**
+     * @return DestinationTable
      */
     public function getDestinationTable()
     {
-        if (($this->destinationTable instanceof DestinationTable)) {
-            return $this->destinationTable;
-        }
-
-        $sm = $this->getServiceLocator();
-        $this->destinationTable = $sm->get('Application\Model\DestinationTable');
-
-        return $this->destinationTable;
+        return $this->serviceManager->get(DestinationTable::class);
     }
 }
