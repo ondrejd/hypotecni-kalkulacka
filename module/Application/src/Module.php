@@ -13,9 +13,9 @@ use Application\Model\Destination;
 use Application\Model\DestinationTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
+use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\Mvc\MvcEvent;
 
 /**
@@ -23,15 +23,11 @@ use Zend\Mvc\MvcEvent;
  *
  * @author ondrejd
  */
-class Module implements 
-    ConfigProviderInterface, 
-    ViewHelperProviderInterface
+class Module implements
+        ConfigProviderInterface,
+        ControllerProviderInterface,
+        ViewHelperProviderInterface
 {
-    /**
-     * @var string
-     */
-    const VERSION = '3.0.2';
-
     /**
      * Returns module's configuration.
      * @return array
@@ -47,8 +43,8 @@ class Module implements
      */
     public function getServiceConfig()
     {
-        return array(
-            'factories' => array(
+        return [
+            'factories' => [
                 ContactTable::class =>  function($sm) {
                     $tableGateway = $sm->get('ContactTableGateway');
                     $table = new ContactTable($tableGateway);
@@ -71,8 +67,8 @@ class Module implements
                     $resultSetPrototype->setArrayObjectPrototype(new Destination());
                     return new TableGateway('destination', $dbAdapter, null, $resultSetPrototype);
                 },
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -82,12 +78,12 @@ class Module implements
     public function getViewHelperConfig()
     {
         return [
-            'factories' => array(
+            'factories' => [
                 'data_table' => function($sm) {
                     $helper = new View\Helper\DataTable();
                     return $helper;
                 }
-            ),
+            ],
         ];
     }
 
@@ -102,4 +98,40 @@ class Module implements
         $viewModel = $event->getApplication()->getMvcEvent()->getViewModel();
         $viewModel->language = 'cs';
     }
+
+    /**
+     * Returns controllers config.
+     * @return array
+     */
+    public function getControllerConfig()
+    {
+        return [
+            /*'factories' => [
+                Controller\IndexController::class => function($sm) {
+                    $serviceLocator   = $sm->getServiceLocator();
+                    $contactTable     = $serviceLocator->get(ContactTable::class);
+                    $destinationTable = $serviceLocator->get(DestinationTable::class);
+
+                    $controller = new Controller\IndexController($contactTable, $destinationTable);
+                    return $controller;
+                },
+                Controller\AdminController::class => function($sm) {
+                    $serviceLocator   = $sm->getServiceLocator();
+                    $contactTable     = $serviceLocator->get(ContactTable::class);
+                    $destinationTable = $serviceLocator->get(DestinationTable::class);
+
+                    $controller = new Controller\IndexController($contactTable, $destinationTable);
+                    return $controller;
+                }
+            ],*/
+            'initializers' => [
+                function ($instance, $sm) {
+                    if ($instance instanceof ConfigAwareInterface) {
+                        $instance->setConfig($sm->getServiceLocator()->get('Config'));
+                    }
+                }
+            ],
+        ];
+    }
+
 }

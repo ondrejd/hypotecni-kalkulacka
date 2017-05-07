@@ -13,7 +13,7 @@ use Application\Form\ContactForm;
 use Zend\View\Model\ViewModel;
 
 /**
- * Description of IndexController
+ * Renders calculator for mortgage.
  *
  * @author ondrejd
  */
@@ -27,7 +27,10 @@ class IndexController extends CommonController
         $view = new ViewModel();
         $calculatorForm = new CalculatorForm();
         $contactForm = new ContactForm();
-
+        //$destinationsTable = $this->getDestinationTable();
+        $destinations = $this->getDestinationTable()->fetchAll();
+var_dump($destinations);
+exit();
         //$form->get('submit')->setValue('Add');
         //$calculatorForm->get('')
 

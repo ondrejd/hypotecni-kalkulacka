@@ -94,4 +94,9 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    'view_helpers' => [
+        'invokables' => [
+            'data_table' => View\Helper\DataTable::class,
+        ],
+    ],
 ];

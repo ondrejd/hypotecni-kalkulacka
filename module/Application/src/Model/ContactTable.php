@@ -15,7 +15,7 @@ use Zend\Db\TableGateway\TableGateway;
  *
  * @author ondrejd
  */
-class ContactTable
+class ContactTable extends AbstractTable
 {
     protected $tableGateway;
 
@@ -33,7 +33,7 @@ class ContactTable
         return $resultSet;
     }
 
-    public function getContact($id)
+    public function fetchOneById($id)
     {
         $id  = (int) $id;
         $rowset = $this->tableGateway->select(array('id' => $id));

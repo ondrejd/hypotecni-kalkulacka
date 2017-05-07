@@ -8,6 +8,7 @@
 
 namespace Application\Controller;
 
+use Application\ConfigAwareInterface;
 use Application\Model\Contact;
 use Application\Model\ContactTable;
 use Application\Model\Destination;
@@ -21,7 +22,7 @@ use Zend\View\Model\ViewModel;
  *
  * @author ondrejd
  */
-class CommonController extends AbstractActionController
+class CommonController extends AbstractActionController implements ConfigAwareInterface
 {
     /**
      * @var ServiceManager $serviceManager
@@ -51,5 +52,44 @@ class CommonController extends AbstractActionController
     public function getDestinationTable()
     {
         return $this->serviceManager->get(DestinationTable::class);
+    }
+
+    //ConfigAwareInterface
+    protected $config;
+    public function setConfig($config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * @link https://akrabat.com/sending-an-html-with-text-alternative-email-with-zendmail/
+     * @param string $htmlBody
+     * @param string $textBody
+     * @param string $subject
+     * @param string $from
+     * @param string $to
+     */
+    public function sendMail($htmlBody, $textBody, $subject, $from, $to)
+    {
+        $htmlPart = new MimePart($htmlBody);
+        $htmlPart->type = "text/html";
+
+        $textPart = new MimePart($textBody);
+        $textPart->type = "text/plain";
+
+        $body = new MimeMessage();
+        $body->setParts(array($textPart, $htmlPart));
+
+        $message = new MailMessage();
+        $message->setFrom($from);
+        $message->addTo($to);
+        $message->setSubject($subject);
+
+        $message->setEncoding("UTF-8");
+        $message->setBody($body);
+        $message->getHeaders()->get('content-type')->setType('multipart/alternative');
+
+        $transport = new Mail\Transport\Sendmail();
+        $transport->send($message);
     }
 }

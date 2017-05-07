@@ -8,6 +8,9 @@
 
 namespace Application\Model;
 
+use Zend\Db\ResultSet\HydratingResultSet;
+use Zend\Stdlib\Hydrator\ArraySerializable;
+
 /**
  * Description of AbstractTable
  *
@@ -15,13 +18,35 @@ namespace Application\Model;
  */
 abstract class AbstractTable implements TableInterface
 {
+    protected $dbAdapter;
+
+    protected function fetch($sql, $params = null)
+    {
+        $this->
+        $dbAdapter = $this->getDbAdapter();
+        $statement = $dbAdapter->createStatement($sql);
+        $statement->prepare();
+
+        $result = $statement->execute($params);
+
+        if ($result instanceof ResultInterface) {
+            $hydrator     = new ArraySerializable();
+            $rowPrototype = new __SELF__;
+            $resultset    = new HydratingResultSet($hydrator, $rowPrototype);
+            $resultset->initialize($result);
+ 
+            return $resultset;
+        }
+ 
+        return $result;
+    }
+
     /**
-     * @return \Zend\Db\ResultSet\ResultSet
+     * @return HydratingResultSet
      */
     public function fetchAll()
     {
-        $resultSet = $this->tableGateway->select();
-        return $resultSet;
+        return $this->fetch('SELECT * FROM `destinations` WHERE 1 ;');
     }
 
     /**
